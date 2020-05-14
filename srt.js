@@ -1,17 +1,26 @@
 window.onload = function(){
-   let list = document.querySelectorAll('li');
-   let arr = []
-   for(let i=0; i<list.length; i++){
-      arr[i] = list[i].innerText;
-      var sorted = arr.sort();
-      list[i].innerText = '';
-      }
-      for(var j=0; j<=sorted.length; j++){
-        list[j].innerText = sorted[j];
-      }
+ let spisok = document.querySelectorAll('.spisok');
+ 
+
+ for(let i=0; i<spisok.length; i++){
+   let sorted = [...spisok[i].children].sort(function(a,b){
+     if(a.innerHTML > b.innerHTML){
+       return 1
+     }
+     if(a.innerHTML <= b.innerHTML){
+       return -1
+     }
+     if( a.innerHTML == b.innerHTML){
+       return 0
+     }     
+ });
+ spisok[i].innerHTML = ''
+ for(let li of sorted){
+   spisok[i].appendChild(li)
+
     }
-      
-        
+  }
+ }
       
     
       
